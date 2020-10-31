@@ -1,13 +1,13 @@
 from django.db import models 
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone 
-from box.core import settings as core_settings 
+from sw_utils import settings as core_settings 
 
 from tinymce import HTMLField
 
 from .managers import BasicManager, ActiveManager
 from django.db.models.manager import BaseManager
-from box.core.helpers import get_admin_url
+from sw_utils.helpers import get_admin_url
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import os
@@ -107,7 +107,7 @@ class AbstractPage(BaseMixin):
 		return slug
 
 	def save(self, *args, **kwargs):
-		from box.core.signals import handle_slug 
+		from sw_utils.signals import handle_slug 
 		if not self.meta_title and self.title:
 			self.meta_title = self.title 
 		if not self.alt and self.title:

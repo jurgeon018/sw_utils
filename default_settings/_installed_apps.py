@@ -31,37 +31,37 @@ third_party = [
     'nested_admin',
 ]
 box_core = [
-    'box.core',
-    'box.core.sw_global_config',
-    'box.core.sw_solo',
-    'box.core.sw_watermarker',
-    'box.core.sw_model_search',
-    'box.core.sw_currency',
-    'box.core.sw_content',
-    'box.core.sw_contact_form',
-    'box.core.sw_auth',
+    'sw_utils',
+    'sw_utils.sw_global_config',
+    'sw_utils.sw_solo',
+    'sw_utils.sw_watermarker',
+    'sw_utils.sw_model_search',
+    'sw_utils.sw_currency',
+    'sw_utils.sw_content',
+    'sw_utils.sw_contact_form',
+    'sw_utils.sw_auth',
 ]
 box_delivery = [
-    'box.apps.sw_delivery',
-    'box.apps.sw_delivery.sw_novaposhta',
-    'box.apps.sw_delivery.sw_delivery_auto',
-    'box.apps.sw_delivery.sw_sat',
+    'sw_delivery',
+    'sw_novaposhta',
+    'sw_delivery_auto',
+    'sw_sat',
 ]
 box_shop = [
-    'box.apps.sw_shop',      # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
-    'box.apps.sw_shop.sw_catalog',
-    'box.apps.sw_shop.sw_order',
-    'box.apps.sw_shop.sw_cart',
-    'box.apps.sw_shop.sw_customer',
+    'sw_shop',      # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
+    'sw_shop.sw_catalog',
+    'sw_shop.sw_order',
+    'sw_shop.sw_cart',
+    'sw_shop.sw_customer',
 ]
 box_payment = [
-    'box.apps.sw_payment',   # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
-    'box.apps.sw_payment.liqpay',
-    'box.apps.sw_payment.wayforpay',
-    'box.apps.sw_payment.interkassa',
+    'sw_payment',   # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
+    'liqpay',
+    'wayforpay',
+    'interkassa',
 ]
 box_blog = [
-    'box.apps.sw_blog',
+    'sw_blog',
 ]
 INSTALLED_APPS  = [
     *priority_third_party,

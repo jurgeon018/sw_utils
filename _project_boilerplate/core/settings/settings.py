@@ -1,4 +1,4 @@
-from box.core.default_settings import * 
+from sw_utils.default_settings import * 
 
 INSTALLED_APPS  = [
     *priority_third_party,
@@ -37,6 +37,6 @@ PROJECT_CORE_MULTILINGUAL_URLS = [
 PROJECT_CORE_URLS = [
     'project.urls',
 ]
-ROOT_URLCONF     = 'box.core.urls'
+ROOT_URLCONF     = 'sw_utils.urls'
 WSGI_APPLICATION = 'core.wsgi.application'
 

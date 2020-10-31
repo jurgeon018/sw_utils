@@ -9,8 +9,6 @@ from django.utils.translation import gettext_lazy as _
 
 from .forms import * 
 
-from box.core.modelclone import ClonableModelAdmin
-
 from import_export.admin import *
 from adminsortable2.admin import SortableAdminMixin
 
@@ -18,7 +16,6 @@ from django.core.paginator import Paginator
 from tablib import Dataset
 import inspect 
 from import_export.resources import ModelResource
-from django.conf import settings
 from importlib import import_module
 from io import StringIO, BytesIO
 import csv 
@@ -214,25 +211,43 @@ class BaseMixin(object):
 
 
 
+if 'sw_modelclone' in settings.INSTALLED_APPS:
+  from sw_modelclone.admin import ClonableModelAdmin
+  class ImportExportClonableMixin(
+    BaseMixin,
+    ImportExportActionModelAdmin,
+    ImportExportModelAdmin, 
+    ClonableModelAdmin, 
+    admin.ModelAdmin,
+    ):
+    pass
 
-class ImportExportClonableMixin(
-  BaseMixin,
-  ImportExportActionModelAdmin,
-  ImportExportModelAdmin, 
-  ClonableModelAdmin, 
-  admin.ModelAdmin,
-  ):
-  pass
+  class BaseAdmin(
+    BaseMixin,
+    ImportExportActionModelAdmin,
+    ImportExportModelAdmin, 
+    # SortableAdminMixin, 
+    ClonableModelAdmin, 
+    admin.ModelAdmin,
+    ):
+    pass 
+else:
+    class ImportExportClonableMixin(
+    BaseMixin,
+    ImportExportActionModelAdmin,
+    ImportExportModelAdmin, 
+    admin.ModelAdmin,
+    ):
+    pass
 
-class BaseAdmin(
-  BaseMixin,
-  ImportExportActionModelAdmin,
-  ImportExportModelAdmin, 
-  # SortableAdminMixin, 
-  ClonableModelAdmin, 
-  admin.ModelAdmin,
-  ):
-  pass 
+  class BaseAdmin(
+    BaseMixin,
+    ImportExportActionModelAdmin,
+    ImportExportModelAdmin, 
+    # SortableAdminMixin, 
+    admin.ModelAdmin,
+    ):
+    pass 
 
 
 

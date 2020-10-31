@@ -13,8 +13,8 @@ from django.conf import settings
 from . import settings as core_settings
 from .views import *
 from filebrowser.sites import site
-from box.core.views import robots, set_lang, testmail
-from box.core.sitemaps import StaticSitemap
+from sw_utils.views import robots, set_lang, testmail
+from sw_utils.sitemaps import StaticSitemap
 from importlib import import_module
 
 sitemaps = {
@@ -30,19 +30,19 @@ for project_name, path_name in settings.SITEMAP_PATHS.items():
     })
   except:
     pass
-# if 'box.core.sw_content' in settings.INSTALLED_APPS:
-#   from box.core.sw_content.sitemaps import PageSitemap
+# if 'sw_utils.sw_content' in settings.INSTALLED_APPS:
+#   from sw_utils.sw_content.sitemaps import PageSitemap
 #   sitemaps.update({
 #     'pages':PageSitemap,
 #   })
-if 'box.apps.sw_shop.sw_catalog' in settings.INSTALLED_APPS:
-  from box.apps.sw_shop.sw_catalog.sitemaps import ItemSitemap, ItemCategorySitemap
+if 'sw_shop.sw_catalog' in settings.INSTALLED_APPS:
+  from sw_shop.sw_catalog.sitemaps import ItemSitemap, ItemCategorySitemap
   sitemaps.update({
   'items':           ItemSitemap,
   'item_categories': ItemCategorySitemap,
   })
-if 'box.apps.sw_blog' in settings.INSTALLED_APPS:
-  from box.apps.sw_blog.sitemaps import PostSitemap, PostCategorySitemap
+if 'sw_blog' in settings.INSTALLED_APPS:
+  from sw_blog.sitemaps import PostSitemap, PostCategorySitemap
   sitemaps.update({
     'posts':           PostSitemap, 
     'post_categories': PostCategorySitemap, 
@@ -68,10 +68,10 @@ PROJECT_CORE              = [path('', include(url)) for url in core_settings.PRO
 PROJECT_CORE_MULTILINGUAL = [path('', include(url)) for url in core_settings.PROJECT_CORE_MULTILINGUAL_URLS]
 
 excluded_apps = [
-  'box.core', 
-  'box.apps.sw_shop', 
-  'box.apps.sw_payment',
-  'box.apps.sw_delivery',
+  'sw_utils', 
+  'sw_shop', 
+  'sw_payment',
+  'sw_delivery',
 ]
 box_apps = [app for app in settings.INSTALLED_APPS if app.startswith('box.') and  app not in excluded_apps]  #https://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
 box = []

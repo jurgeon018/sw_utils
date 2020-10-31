@@ -3,9 +3,10 @@ from django.utils.translation import gettext_lazy as _
 
 
 class CoreConfig(apps.AppConfig):
-    name = 'box.core'
+    name = 'sw_utils'
     verbose_name = _('Ядро')
     verbose_name_plural = verbose_name
+    
     def ready(self):
         from .signals import handle_slug
         from .models import AbstractPage
@@ -15,6 +16,6 @@ class CoreConfig(apps.AppConfig):
 
 
 
-default_app_config = 'box.core.CoreConfig'
+default_app_config = 'sw_utils.CoreConfig'
 
 

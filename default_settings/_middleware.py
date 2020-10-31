@@ -12,9 +12,9 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     
-    'box.core.middleware.PutParsingMiddleware',
-    'box.core.middleware.JSONParsingMiddleware',
-    'box.core.middleware.DisableCSRF',
+    'sw_utils.middleware.PutParsingMiddleware',
+    'sw_utils.middleware.JSONParsingMiddleware',
+    'sw_utils.middleware.DisableCSRF',
 ]
 
 

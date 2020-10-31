@@ -1,6 +1,6 @@
 # 'DEFAULT_AUTHENTICATION_CLASSES'= (
 #     # 'rest_framework.authentication.SessionAuthentication',
-#     'box.core.authentication.CsrfExemptSessionAuthentication',
+#     'sw_utils.authentication.CsrfExemptSessionAuthentication',
 #     'rest_framework.authentication.BasicAuthentication'
 # ),
 

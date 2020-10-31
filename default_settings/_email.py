@@ -8,7 +8,7 @@ MAIL_TYPE = config('MAIL_TYPE')
 if MAIL_TYPE == 'from_settings':
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 else:
-    EMAIL_BACKEND = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
+    EMAIL_BACKEND = 'sw_utils.sw_global_config.backends.ConfiguredEmailBackend'
 EMAIL_USE_TLS          = True
 EMAIL_USE_SSL          = False
 EMAIL_PORT             = 587

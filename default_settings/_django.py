@@ -5,8 +5,8 @@ from decouple import config
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-ROOT_URLCONF       = 'box.core.urls'
-WSGI_APPLICATION   = 'box.core.wsgi.application'
+ROOT_URLCONF       = 'sw_utils.urls'
+WSGI_APPLICATION   = 'sw_utils.wsgi.application'
 BASE_DIR           = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 ALLOWED_HOSTS      = ['*']
 SECRET_KEY         = config('SECRET_KEY') # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page

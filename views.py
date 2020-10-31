@@ -6,8 +6,15 @@ from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail 
 from django.conf import settings 
 from django.utils import translation
-from box.core.sw_global_config.models import GlobalConfig
+from sw_utils.sw_global_config.models import GlobalConfig
 from . import settings as core_settings
+from django.views.i18n import set_language
+from django.utils.translation import get_language
+
+
+from django.urls import translate_url
+from django.utils.translation import get_language_from_request, check_for_language
+
 
 
 def custom_bad_request(request, exception):
@@ -33,12 +40,7 @@ def robots(request):
   else:
     response = render(request, 'core/robots.txt', locals())
   return response
-from django.views.i18n import set_language
-from django.utils.translation import get_language
 
-
-from django.urls import translate_url
-from django.utils.translation import get_language_from_request, check_for_language
 # def set_lang(request, lang=None):
 def set_lang(request, new_lang, old_lang=None):
   # old_langg     = get_language_from_request(request, check_path=True)

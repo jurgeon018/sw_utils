@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 # from datetime import datetime 
 # from io import StringIO, BytesIO
 # from tablib import Dataset
-# from box.core.utils import get_resource, get_resources
+# from sw_utils.utils import get_resource, get_resources
 
 from allauth.socialaccount.models import SocialApp
 from django.contrib.sites.models import Site 

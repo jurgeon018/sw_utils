@@ -168,7 +168,7 @@ class BaseMixin(object):
   is_active_on.short_description     = ("Увімкнути")
   is_active_off.short_description    = ("Вимкнути")
   # changelist
-  change_list_template = 'core/sortable_import_export_change_list.html'
+  change_list_template = 'sw_utils/sortable_import_export_change_list.html'
   actions = [
       "is_active_on",
       "is_active_off",
@@ -232,7 +232,7 @@ if 'sw_modelclone' in settings.INSTALLED_APPS:
     ):
     pass 
 else:
-    class ImportExportClonableMixin(
+  class ImportExportClonableMixin(
     BaseMixin,
     ImportExportActionModelAdmin,
     ImportExportModelAdmin, 
@@ -322,7 +322,7 @@ def move_to(self, request, queryset, initial):
         '_selected_action':request.POST.getlist(admin.helpers.ACTION_CHECKBOX_NAME),
       }
     form = ChangeForm(initial=initial)
-    return render(request, 'core/admin/move_to.html', {
+    return render(request, 'sw_utils/admin/move_to.html', {
       "queryset":queryset, 
       "form":form, 
       'action_value':action_value,

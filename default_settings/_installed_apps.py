@@ -32,35 +32,33 @@ third_party = [
 ]
 box_core = [
     'sw_utils',
-    'sw_utils.sw_global_config',
-    'sw_utils.sw_solo',
-    'sw_utils.sw_watermarker',
-    'sw_utils.sw_model_search',
-    'sw_utils.sw_currency',
-    'sw_utils.sw_content',
-    'sw_utils.sw_contact_form',
-    'sw_utils.sw_auth',
+    'sw_global_config',
+    'sw_solo',
+    'sw_watermarker',
+    'sw_model_search',
+    'sw_currency',
+    'sw_content',
+    'sw_contact_form',
+    'sw_auth',
 ]
-box_delivery = [
+delivery = [
     'sw_delivery',
     'sw_novaposhta',
     'sw_delivery_auto',
     'sw_sat',
 ]
-box_shop = [
-    'sw_shop',      # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
-    'sw_shop.sw_catalog',
-    'sw_shop.sw_order',
-    'sw_shop.sw_cart',
-    'sw_shop.sw_customer',
+shop = [
+    'sw_catalog',
+    'sw_order',
+    'sw_cart',
+    'sw_customer',
 ]
-box_payment = [
-    'sw_payment',   # !! не забирай це, бо тоді з адмінки пропадуть блочки з django-admin-tools
-    'liqpay',
-    'wayforpay',
-    'interkassa',
+payment = [
+    'sw_liqpay',
+    'sw_wayforpay',
+    'sw_interkassa',
 ]
-box_blog = [
+blog = [
     'sw_blog',
 ]
 INSTALLED_APPS  = [
@@ -68,9 +66,9 @@ INSTALLED_APPS  = [
     *django_contrib,
     *third_party,
     *box_core,
-    *box_delivery,
-    *box_shop,
-    *box_payment,
-    *box_blog,
+    *delivery,
+    *shop,
+    *payment,
+    *blog,
 ]
 

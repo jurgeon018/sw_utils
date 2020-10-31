@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.urls import reverse 
 from django.template.loader import render_to_string
 
-from sw_utils.sw_global_config.models import GlobalConfig, GlobalRecipientEmail
+from sw_global_config.models import GlobalConfig, GlobalRecipientEmail
 
 
 def box_send_mail(subject, template, email_config, model, fail_silently=False, context={}):

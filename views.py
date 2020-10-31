@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail 
 from django.conf import settings 
 from django.utils import translation
-from sw_utils.sw_global_config.models import GlobalConfig
+from sw_global_config.models import GlobalConfig
 from . import settings as core_settings
 from django.views.i18n import set_language
 from django.utils.translation import get_language

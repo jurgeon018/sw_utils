@@ -10,7 +10,6 @@ LANGUAGES = [
     ('uk', _('Українська')),
     ('en', _('Англійська')),
     ('ru', _('Російська')),
-    # ('en-us', ('en')),
 ]
 LANGUAGE_CODE = 'uk' 
 MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE

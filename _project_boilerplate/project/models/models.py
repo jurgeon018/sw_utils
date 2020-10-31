@@ -1,5 +1,5 @@
 from django.db import models
-from sw_utils.sw_auth.models import BoxAbstractUser 
+from sw_auth.models import BoxAbstractUser 
 from django.contrib.auth import get_user_model 
 from django.utils import timezone
 

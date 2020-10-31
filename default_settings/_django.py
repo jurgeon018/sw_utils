@@ -11,7 +11,6 @@ BASE_DIR           = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dir
 ALLOWED_HOSTS      = ['*']
 SECRET_KEY         = config('SECRET_KEY') # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
 DEBUG              = config('DEBUG', cast=bool) # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
-print("DEBUG:", DEBUG)
 STATICFILES_DIRS   = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT        = os.path.join(BASE_DIR, "static_root")
 MEDIA_ROOT         = os.path.join(BASE_DIR, "media")

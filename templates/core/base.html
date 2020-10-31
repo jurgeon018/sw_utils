@@ -1,0 +1,106 @@
+{% load i18n core %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block head_top_scripts %}
+    {% for script in global_config.scripts.all %}
+      {% if script.position == 'head_top' %}
+        {{script.code|safe}}
+      {% endif%}
+    {% endfor %}
+  {% endblock head_top_scripts %}
+
+  {% block head %}
+    <title>
+      {% if page.meta_title %}
+        {{page.meta_title}}
+      {% endif %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{page.meta_descr}}"/>
+    <meta name="keywords" content="{{page.meta_key}}" />
+    {% block meta_robots %}
+    {% if global_config.robots %}
+    <meta name="robots" content="{{global_config.robots}}" />
+    {% endif %}
+    {% endblock meta_robots %}
+    
+    {% block hreflang %}
+      {% for language_code, language_name in LANGUAGES %}
+        <link
+          rel="alternate"
+          hreflang="{{ language_code }}"
+          href="{% translate_url language_code %}" />
+      {% endfor %}
+      <link 
+        rel="alternate" 
+        hreflang="x-default" 
+        href="{% translate_url 'uk' %}" />
+    {% endblock hreflang %}
+    
+    {% block favicon %}
+      <link rel="icon" href="{{global_config.favicon.url}}" type="{{global_config.favicon_type}}" />
+    {% endblock favicon %}
+    {% block ogimage %}
+      <meta property="og:image" content="{{global_config.og_image_square.url}}" />
+      <meta property="og:image" content="{{global_config.og_image_rectangle.url}}" />
+      <meta property="og:image" content="{{global_config.og_image_square.url}}" />
+    {% endblock ogimage %}
+
+    {% block styles %}{% endblock styles%}
+
+    {% block extra_styles %}{% endblock extra_styles %}
+
+
+  {% endblock head %}
+  {% block head_bottom_scripts %}
+    {% for script in global_config.scripts.all %}
+      {% if script.position == 'head_bottom' %}
+        {{script.code|safe}}
+      {% endif%}
+    {% endfor %}
+  {% endblock head_bottom_scripts %}
+
+</head>
+<body class="{% block body_class%}{% endblock body_class%}">
+  <input type="hidden" id='current_language' name="current_language" value="{{LANGUAGE_CODE}}">
+  {% block body_top_scripts %}
+    {% for script in global_config.scripts.all %}
+      {% if script.position == 'body_top' %}
+        {{script.code|safe}}
+      {% endif%}
+    {% endfor %}
+  {% endblock body_top_scripts %}
+  
+  {% block header %}{% endblock header %} 
+  {% block outer_content%}
+    {% block content %}
+    {% endblock content %}
+  {% endblock outer_content%}
+  {% block extra_content %}{% endblock extra_content %}
+
+  {% block js_cat %}
+  <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+  {% endblock js_cat %}
+  {% block scripts %}{% endblock scripts%}
+  {% block extra_scripts %}{% endblock extra_scripts%}
+
+  {% block body_bottom_scripts %}
+    {% for script in global_config.scripts.all %}
+      {% if script.position == 'body_bottom' %}
+        {{script.code|safe}}
+      {% endif%}
+    {% endfor %}
+  {% endblock body_bottom_scripts %}
+</body>
+</html>
+
+
+
+
+
+

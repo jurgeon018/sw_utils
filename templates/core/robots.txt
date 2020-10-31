@@ -1,0 +1,6 @@
+User-agent: *
+Dissallow: /admin/
+Dissallow: /set_lang/*
+Dissallow: /api/*
+
+

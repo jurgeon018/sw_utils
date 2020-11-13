@@ -96,10 +96,10 @@ def generate_urlpatterns():
   excluded_apps = [
     'sw_utils', 
   ]
-  # box_apps = [app for app in settings.INSTALLED_APPS if app in get_box_apps() and app not in excluded_apps]  #https://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
   box_apps = []
   for app in settings.INSTALLED_APPS:
-    if app in get_box_apps() and app not in excluded_apps:
+    if app.startswith('sw_') and app not in excluded_apps:
+    # if app in get_box_apps() and app not in excluded_apps:
       box_apps.append(app)
 
   box = []
@@ -107,12 +107,8 @@ def generate_urlpatterns():
 
   for app in box_apps:
     # try:
-    #   print('appended app urls: ', app)
-    #   url = path('', include(f'{app}.urls'))
-    #   box.append(url)
+    #   box.append(path('', include(f'{app}.urls')))
     # except ImportError as i_e:
-    #   print("i_e: ", i_e)
-    #   print()
     #   pass 
     urls_path = f'{app}.urls'
     if find_spec(urls_path) is not None:
@@ -121,11 +117,8 @@ def generate_urlpatterns():
         
   for app in box_apps:
     # try:
-    #   print('appended app multilingual urls: ', app)
     #   box_multilingual.append(path('', include(f'{app}.multilingual_urls')))
     # except ImportError as i_e:
-    #   print("i_e: ", i_e)
-    #   print()
     #   pass 
     urls_path = f'{app}.multilingual_urls'
     if find_spec(urls_path) is not None:
@@ -193,4 +186,6 @@ def generate_urlpatterns():
   return urlpatterns
 
 
+
+urlpatterns = generate_urlpatterns()
 

@@ -8,8 +8,8 @@ from django.conf import settings
 from django.views.decorators.cache import cache_page
 from django.apps import apps
 from django.conf import settings
-
-
+from importlib import import_module
+from importlib.util import find_spec
 from sw_utils.views import robots, set_lang, testmail
 from sw_utils.sitemaps import StaticSitemap
 from . import settings as core_settings
@@ -62,6 +62,32 @@ def generate_sitemaps():
 
   return sitemaps
 
+def get_box_apps():
+  box_apps = [
+    # 'sw_utils',
+    'sw_modelclone',
+    'sw_global_config',
+    'sw_solo',
+    'sw_watermarker',
+    'sw_model_search',
+    'sw_currency',
+    'sw_content',
+    'sw_contact_form',
+    'sw_auth',
+    'sw_delivery',
+    'sw_novaposhta',
+    'sw_delivery_auto',
+    'sw_sat',
+    'sw_catalog',
+    'sw_order',
+    'sw_cart',
+    'sw_customer',
+    'sw_liqpay',
+    'sw_wayforpay',
+    'sw_interkassa',
+    'sw_blog',
+  ]
+  return box_apps
 
 def generate_urlpatterns():
   PROJECT_CORE              = [path('', include(url)) for url in core_settings.PROJECT_CORE_URLS]
@@ -70,22 +96,41 @@ def generate_urlpatterns():
   excluded_apps = [
     'sw_utils', 
   ]
-  box_apps = [app for app in settings.INSTALLED_APPS if app.startswith('box.') and  app not in excluded_apps]  #https://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
+  # box_apps = [app for app in settings.INSTALLED_APPS if app in get_box_apps() and app not in excluded_apps]  #https://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
+  box_apps = []
+  for app in settings.INSTALLED_APPS:
+    if app in get_box_apps() and app not in excluded_apps:
+      box_apps.append(app)
+
   box = []
   box_multilingual = []
 
   for app in box_apps:
-    try:
-      url = path('', include(f'{app}.urls'))
+    # try:
+    #   print('appended app urls: ', app)
+    #   url = path('', include(f'{app}.urls'))
+    #   box.append(url)
+    # except ImportError as i_e:
+    #   print("i_e: ", i_e)
+    #   print()
+    #   pass 
+    urls_path = f'{app}.urls'
+    if find_spec(urls_path) is not None:
+      url = path('', include(urls_path))
       box.append(url)
-    except ImportError as i_e:
-      pass 
-
+        
   for app in box_apps:
-    try:
-      box_multilingual.append(path('', include(f'{app}.multilingual_urls')))
-    except ImportError as i_e:
-      pass 
+    # try:
+    #   print('appended app multilingual urls: ', app)
+    #   box_multilingual.append(path('', include(f'{app}.multilingual_urls')))
+    # except ImportError as i_e:
+    #   print("i_e: ", i_e)
+    #   print()
+    #   pass 
+    urls_path = f'{app}.multilingual_urls'
+    if find_spec(urls_path) is not None:
+      url = path('', include(urls_path))
+      box.append(url)
 
   multilingual = i18n_patterns(
     path('admin/',    admin.site.urls),

@@ -32,6 +32,7 @@ third_party = [
 ]
 box_core = [
     'sw_utils',
+    'sw_modelclone',
     'sw_global_config',
     'sw_solo',
     'sw_watermarker',

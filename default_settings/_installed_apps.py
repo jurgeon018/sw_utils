@@ -40,7 +40,7 @@ box_core = [
     'sw_currency',
     'sw_content',
     'sw_contact_form',
-    'sw_auth',
+    # 'sw_auth',
 ]
 delivery = [
     'sw_delivery',

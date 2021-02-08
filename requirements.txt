@@ -16,7 +16,7 @@ django-modeltranslation
 
 django-mptt
 django-tinymce4-lite 
-# django-tinymce
+django-tinymce
 django-ckeditor
 django-filter
 django-debug-toolbar

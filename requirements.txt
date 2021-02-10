@@ -3,6 +3,7 @@ django-decouple
 transliterate
 pandas 
 bs4 
+cryptography==3.3.1
 selenium 
 xlsxwriter
 django-filebrowser-no-grappelli 

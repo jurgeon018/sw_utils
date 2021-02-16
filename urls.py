@@ -135,6 +135,7 @@ def generate_urlpatterns():
   if settings.DEBUG == True:
     static_urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     static_urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    print("static_urlpatterns: ", static_urlpatterns)
 
   urlpatterns = [
     *PROJECT_CORE,

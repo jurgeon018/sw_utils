@@ -1,6 +1,7 @@
 from ._django import BASE_DIR, os, config 
 
-if config('DB') == 'postgres':
+DB = config('DB', None)
+if DB == 'postgres':
     default = {
         'ENGINE':    'django.db.backends.postgresql_psycopg2',
         'NAME':      config('POSTGRES_DB_NAME'),
@@ -9,7 +10,7 @@ if config('DB') == 'postgres':
         'HOST' :     config('POSTGRES_DB_HOST') or '127.0.0.1',
         'PORT' :     config('POSTGRES_DB_PORT') or '5432',
     }
-elif config('DB') == 'mysql':
+elif DB == 'mysql':
     default = {}
 else:
     default = {

@@ -92,6 +92,8 @@ def generate_sitemaps():
 def generate_urlpatterns():
   PROJECT_CORE              = [path('', include(url)) for url in core_settings.PROJECT_CORE_URLS]
   PROJECT_CORE_MULTILINGUAL = [path('', include(url)) for url in core_settings.PROJECT_CORE_MULTILINGUAL_URLS]
+  for i in PROJECT_CORE_MULTILINGUAL:
+    print(i)
 
   excluded_apps = [
     'sw_utils', 
@@ -129,7 +131,6 @@ def generate_urlpatterns():
     *PROJECT_CORE_MULTILINGUAL,
     prefix_default_language=False,
   )
-
   static_urlpatterns = []
 
   # if settings.DEBUG == True:
@@ -162,4 +163,5 @@ def generate_urlpatterns():
 
 
 urlpatterns = generate_urlpatterns()
-
+# for i in urlpatterns:
+#   print(i) 

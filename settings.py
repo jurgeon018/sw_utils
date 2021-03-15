@@ -25,10 +25,10 @@ CAPTCHA_V2_SECRET = 'SDF'
 CAPTCHA_V3_PUBLIC = 'SDF'
 CAPTCHA_V3_SECRET = 'SDF'
 
-PATH_400    = get('PATH_400', 'core/errors/400.html')
-PATH_403    = get('PATH_403', 'core/errors/403.html')
-PATH_404    = get('PATH_404', 'core/errors/404.html')
-PATH_500    = get('PATH_500', 'core/errors/500.html')
+PATH_400    = get('PATH_400', 'sw_utils/errors/400.html')
+PATH_403    = get('PATH_403', 'sw_utils/errors/403.html')
+PATH_404    = get('PATH_404', 'sw_utils/errors/404.html')
+PATH_500    = get('PATH_500', 'sw_utils/errors/500.html')
 
 HANDLER_400 = get('HANDLER_400', 'sw_utils.views.custom_bad_request')
 HANDLER_403 = get('HANDLER_403', 'sw_utils.views.custom_permission_denied')

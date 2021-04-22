@@ -7,8 +7,8 @@ if DB == 'postgres':
         'NAME':      config('POSTGRES_DB_NAME'),
         'USER' :     config('POSTGRES_DB_USERNAME'),
         'PASSWORD' : config('POSTGRES_DB_PASSWORD'),
-        'HOST' :     config('POSTGRES_DB_HOST') or '127.0.0.1',
-        'PORT' :     config('POSTGRES_DB_PORT') or '5432',
+        'HOST' :     config('POSTGRES_DB_HOST', '127.0.0.1'),
+        'PORT' :     config('POSTGRES_DB_PORT', '5432'),
     }
 elif DB == 'mysql':
     default = {}

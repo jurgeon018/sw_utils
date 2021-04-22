@@ -1,6 +1,0 @@
-python manage.py dumpdata --format=xml --indent=4
-
-
-
-
-

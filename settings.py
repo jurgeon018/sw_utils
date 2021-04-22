@@ -5,7 +5,7 @@ def get(x, y): return getattr(settings, x, y)
 
 
 IMAGE_NOT_FOUND                = get(
-    'IMAGE_NOT_FOUND', '/static/core/img/photo_not_found.jpg')
+    'IMAGE_NOT_FOUND', '/static/sw_utils/img/photo_not_found.jpg')
 SHOW_ADMIN                     = get(
     'SHOW_ADMIN', False)
 PREFIX_DEFAULT_LANGUAGE        = get(

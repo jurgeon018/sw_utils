@@ -154,6 +154,7 @@ class AbstractPage(BaseMixin):
 	def get_absolute_url(self):
 		return reverse("page", kwargs={"slug": self.slug})
 
+
 class AbstractRecipientEmail(models.Model):
 
   email    = models.EmailField(verbose_name=_("Емайл"), max_length=255)
@@ -174,7 +175,4 @@ class AbstractRecipientEmail(models.Model):
 
   class Meta:
     abstract = True 
-
-
-
 

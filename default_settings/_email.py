@@ -1,5 +1,6 @@
 from decouple import config 
 import re 
+
 IGNORABLE_404_URLS = [
     re.compile(r'\.(php|cgi)$'),
     re.compile(r'^/phpmyadmin/'),
@@ -12,30 +13,17 @@ else:
 EMAIL_USE_TLS          = True
 EMAIL_USE_SSL          = False
 EMAIL_PORT             = 587
-EMAIL_HOST             = "mail.starwayua.com"
-EMAIL_HOST_USER        = "dev@starwayua.com"
+# EMAIL_HOST             = "mail.starwayua.com"
+# EMAIL_HOST_USER        = "dev@starwayua.com"
+EMAIL_HOST             = "smpt.google.com"
+EMAIL_HOST_USER        = "starway.notifier@gmail.com"
 EMAIL_HOST_PASSWORD    = config('EMAIL_HOST_PASSWORD', None)
 DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 
-SERVER_EMAIL = 'dev@starwayua.com'
+SERVER_EMAIL = EMAIL_HOST_USER
 ADMINS = [
-    ('jurgeon018', 'jurgeon018@gmail.com'),
-    ('DEV', 'dev@starwayua.com'),
+    ('DEV', EMAIL_HOST_USER),
 ]
 MANAGERS = ADMINS 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

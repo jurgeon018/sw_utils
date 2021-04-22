@@ -1,4 +1,5 @@
-from ._django import BASE_DIR, os, config 
+from ._django import BASE_DIR
+from decouple import config
 
 DB = config('DB', None)
 if DB == 'postgres':
@@ -15,7 +16,7 @@ elif DB == 'mysql':
 else:
     default = {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 DATABASES = {
     'default': default,

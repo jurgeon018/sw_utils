@@ -35,7 +35,7 @@ box_core = [
     'sw_modelclone',
     'sw_global_config',
     'sw_solo',
-    'sw_watermarker',
+    # 'sw_watermarker',
     'sw_model_search',
     'sw_currency',
     'sw_content',
